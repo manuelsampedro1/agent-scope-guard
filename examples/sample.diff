@@ -1,0 +1,19 @@
+diff --git a/src/app.py b/src/app.py
+index 1111111..2222222 100644
+--- a/src/app.py
++++ b/src/app.py
+@@ -1 +1,2 @@
++print("ok")
+diff --git a/tests/test_app.py b/tests/test_app.py
+index 3333333..4444444 100644
+--- a/tests/test_app.py
++++ b/tests/test_app.py
+@@ -1 +1,2 @@
++def test_ok(): pass
+diff --git a/docs/roadmap.md b/docs/roadmap.md
+index 5555555..6666666 100644
+--- a/docs/roadmap.md
++++ b/docs/roadmap.md
+@@ -1 +1,2 @@
++scope creep
+

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-scope-guard"
+version = "0.1.0"
+description = "Fail coding-agent diffs that touch files outside the declared task scope."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [
+  { name = "Manuel Sampedro" }
+]
+keywords = ["ai agents", "codex", "scope guard", "developer tools", "automation"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Quality Assurance"
+]
+
+[project.scripts]
+agent-scope-guard = "agent_scope_guard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
