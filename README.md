@@ -15,14 +15,14 @@ Agents can pass tests while quietly editing unrelated files. `agent-scope-guard`
 ## Install
 
 ```sh
-python -m pip install --upgrade pip
-python -m pip install -e .
+python3 -m pip install --upgrade pip
+python3 -m pip install -e .
 ```
 
 Or run without installing:
 
 ```sh
-PYTHONPATH=src python -m agent_scope_guard examples/sample.diff --allow "src/**" --allow "tests/**"
+PYTHONPATH=src python3 -m agent_scope_guard examples/sample.diff --allow "src/**" --allow "tests/**"
 ```
 
 ## Usage
@@ -50,10 +50,10 @@ git diff --cached --name-only | agent-scope-guard - --paths-only --allow "src/**
 Use an allowlist file:
 
 ```sh
-agent-scope-guard examples/sample.diff --allow-file scope.txt
+agent-scope-guard examples/sample.diff --allow-file examples/scope.txt
 ```
 
-`scope.txt`:
+`examples/scope.txt`:
 
 ```text
 src/**
@@ -75,8 +75,10 @@ Unexpected paths:
 ## Development
 
 ```sh
-PYTHONPATH=src python -m unittest discover -s tests
-PYTHONPATH=src python -m agent_scope_guard examples/sample.diff --allow "src/**" --allow "tests/**"
+make test
+make lint
+make build
+make smoke
 ```
 
 ## Fit With The Agent Workflow Stack
@@ -87,4 +89,3 @@ PYTHONPATH=src python -m agent_scope_guard examples/sample.diff --allow "src/**"
 - `verify-by-change`: match verification to the diff.
 - `agent-rollback-plan`: prepare the undo path.
 - `agent-run-ledger`: keep the run auditable.
-
