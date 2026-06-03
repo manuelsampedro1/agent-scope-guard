@@ -11,6 +11,8 @@ Agents can pass tests while quietly editing unrelated files. `agent-scope-guard`
 - Reports allowed and unexpected paths.
 - Exits non-zero when any changed path is outside the declared scope.
 - Emits text or JSON for CI and automation.
+- Optionally verifies `agent-proof-packet.v1` evidence against the same changed
+  paths before showing packet checks beside scope results.
 
 ## Install
 
@@ -53,6 +55,20 @@ Use an allowlist file:
 agent-scope-guard examples/sample.diff --allow-file examples/scope.txt
 ```
 
+Attach proof-packet evidence:
+
+```sh
+agent-scope-guard examples/sample.diff \
+  --allow-file examples/scope.txt \
+  --proof-packet examples/proof-packet.json \
+  --format json
+```
+
+The proof packet must be complete, include passing checks, have changed-file
+evidence, have no missing evidence, and match the same diff or path list.
+Packet checks do not authorize unexpected paths; scope violations still return
+a non-zero exit.
+
 `examples/scope.txt`:
 
 ```text
@@ -85,6 +101,7 @@ make smoke
 
 - `agent-task-contract`: declare the task before work starts.
 - `agent-scope-guard`: enforce the expected changed paths.
+- `agent-proof-packet`: show validated evidence for the same changed paths.
 - `agent-secret-sentinel`: check for secret leakage.
 - `verify-by-change`: match verification to the diff.
 - `agent-rollback-plan`: prepare the undo path.
